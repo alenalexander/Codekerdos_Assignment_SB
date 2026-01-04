@@ -1,12 +1,6 @@
 package com.codekerdos.session_7;
 
-
-//import com.codekerdos.session_4.beans.Vehicle;
-//import com.codekerdos.session_4.config.ProjectConfig;
-//import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import com.codekerdos.session_7.beans.Person;
-import com.codekerdos.session_7.beans.Vehicle;
 import com.codekerdos.session_7.config.ProjectConfig;
 import com.codekerdos.session_7.implementation.BoseSpeakers;
 import com.codekerdos.session_7.implementation.BridgeStoneTyres;
@@ -25,18 +19,19 @@ public class Session7Application {
 		var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
 		VehicleServices vehicleServices1 = context.getBean(VehicleServices.class);
-
-		vehicleServices1.setSpeakers(context.getBean(BoseSpeakers.class));
-		vehicleServices1.setTyres(context.getBean(MichelinTyre.class));
+//		vehicleServices1.setSpeakers(context.getBean(SonySpeakers.class));
+//		vehicleServices1.setTyres(context.getBean(MichelinTyre.class));
 		System.out.println("active speaker of service1 is " + vehicleServices1.getSpeakers().toString());
 		vehicleServices1.playMusic();
 		vehicleServices1.moveVehicle();
 
-		vehicleServices1.setSpeakers(context.getBean(SonySpeakers.class));
+		vehicleServices1.setSpeakers(context.getBean(BoseSpeakers.class));
 		vehicleServices1.setTyres(context.getBean(BridgeStoneTyres.class));
 		System.out.println("active speaker of service1 is " + vehicleServices1.getSpeakers().toString());
 		vehicleServices1.playMusic();
 		vehicleServices1.moveVehicle();
+
+
 
 		String[] activeSpeakers = context.getBeanNamesForType(Speakers.class);
 		System.out.println(Arrays.toString(activeSpeakers));

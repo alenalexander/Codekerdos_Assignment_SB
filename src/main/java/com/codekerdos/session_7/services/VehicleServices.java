@@ -11,11 +11,14 @@ import org.springframework.stereotype.Component;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class VehicleServices {
 
-    @Autowired
     private Speakers speakers;
-
-//    @Autowired
     private Tyres tyres;
+
+    @Autowired
+    public VehicleServices(Speakers speakers, Tyres tyres) {
+        this.speakers = speakers;
+        this.tyres = tyres;
+    }
 
     // factory design pattern
     public void playMusic(){
